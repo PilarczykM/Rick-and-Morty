@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+import { Character } from './Character'
 import { CharacterResponse } from './types'
 
 export const Characters = () => {
@@ -17,9 +18,9 @@ export const Characters = () => {
   }
 
   return (
-    <div>
+    <div className="characters">
       {status === 'success' && data?.results.map((character, index) => (
-        <p key={index}>{character.name}</p>
+        <Character {...character} key={index}/>
       ))}
     </div>
   )
