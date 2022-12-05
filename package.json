@@ -12,7 +12,8 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
-    "preact": "^10.11.2"
+    "preact": "^10.11.2",
+    "react-query": "^3.39.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.4.0",
