@@ -1,14 +1,23 @@
 import { useQuery } from 'react-query'
+import {useState} from 'preact/hooks'
 import { Character } from './Character'
 import { CharacterResponse } from './types'
 
 export const Characters = () => {
-  const fetchCharacters = async () => {
-    const response = await fetch('https://rickandmortyapi.com/api/character')
-    return response.json()
-  }
+  const [page, setPage] = useState(1)
+  
+  const {data, status} = useQuery<CharacterResponse, Error>({
+    queryKey: ['characters', page],
+    queryFn: async ({signal, queryKey}) => {
+      const characterResponse = await fetch(`https://rickandmortyapi.com/api/character?page=${queryKey[1]}`, {
+        signal,
+      })
 
-  const { data, status } = useQuery<CharacterResponse, Error>('characters', fetchCharacters)
+      return await characterResponse.json()
+    },
+    keepPreviousData: true,
+  })
+
   if (status === 'loading') {
     return <div>Loading...</div>
   }
@@ -22,6 +31,21 @@ export const Characters = () => {
       {status === 'success' && data?.results.map((character, index) => (
         <Character {...character} key={index}/>
       ))}
+      <div>
+        <button
+          onClick={() => setPage((old) => Math.max(old - 1, 1))}
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+        <button
+          onClick={() => setPage((old) => old + 1)}
+          disabled={!data?.info.next}
+        >
+          Next
+        </button>
+        <p style="display: inline; color: white">{page}/{data?.info.pages}</p>
+      </div>
     </div>
   )
 }
