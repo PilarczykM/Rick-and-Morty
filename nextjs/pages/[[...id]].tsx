@@ -7,7 +7,7 @@ import { GetServerSideProps } from 'next/types'
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const page = context.query.id
+  const page = context.query.id ? context.query.id : 1
   const characterResponse = await fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
   const data = await characterResponse.json()
 
