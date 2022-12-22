@@ -1,0 +1,29 @@
+.card {
+    width: 47%;
+    background: rgb(59, 62, 67);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    display: flex;
+  }
+
+  .text_container {
+    padding: 1rem;
+    color: white;
+    font-size: 1.25rem;
+  }
+  
+  .text-container h3 {
+    font-size: 2rem;
+  }
+  
+  .status {
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
