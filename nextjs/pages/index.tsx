@@ -40,9 +40,7 @@ export default function Home({ response }: CharacterProps) {
               </button>
             </Link>
             <Link href="/2">
-              <button
-                disabled={!response?.info.next}
-              >
+              <button disabled={!response?.info.next}>
                 Next
               </button>
             </Link>
