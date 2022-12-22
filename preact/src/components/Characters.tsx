@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import {useState} from 'preact/hooks'
 import { Character } from './Character'
-import { CharacterResponse } from './types'
+import { CharacterResponse } from '../shared/types'
 
 export const Characters = () => {
   const [page, setPage] = useState(1)

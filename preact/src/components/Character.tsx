@@ -1,4 +1,4 @@
-import { CharacterProp } from './types'
+import { CharacterProp } from '../shared/types'
 
 export const Character = (character: CharacterProp) => {
   return (
